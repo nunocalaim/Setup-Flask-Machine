@@ -11,7 +11,7 @@ import json
 import boto3
 
 s3 = boto3.resource('s3')
-BUCKET = "ddc_s3_bucket"
+BUCKET = "ddc-s3-bucket"
 
 
 
