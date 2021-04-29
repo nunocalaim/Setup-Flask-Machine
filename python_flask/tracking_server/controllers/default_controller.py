@@ -57,6 +57,6 @@ def track_post(body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = TrackBody.from_dict(connexion.request.get_json())  # noqa: E501
-    with open('post-track-{}-{}.json'.format(body.user_id, body.events[-1].timestamp_utc), 'w') as file:
+        with open('post-track-{}-{}.json'.format(body.user_id, body.events[-1].timestamp_utc), 'w') as file:
             json.dump(connexion.request.get_json(), file)
     return ''
