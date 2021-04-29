@@ -27,9 +27,10 @@ def alias_post(body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = AliasBody.from_dict(connexion.request.get_json())  # noqa: E501
-        with open('post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc), 'w') as file:
+        fn = 'post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc)
+        with open(fn, 'w') as file:
             json.dump(connexion.request.get_json(), file)
-        s3.Bucket(BUCKET).upload_file('post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc), 'post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc))
+        s3.Bucket(BUCKET).upload_file(fn, fn)
     return ''
 
 
@@ -45,8 +46,10 @@ def profile_post(body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = ProfileBody.from_dict(connexion.request.get_json())  # noqa: E501
-        with open('post-profile-{}-{}.json'.format(body.user_id, body.timestamp_utc), 'w') as file:
+        fn = 'post-profile-{}-{}.json'.format(body.user_id, body.timestamp_utc)
+        with open(fn, 'w') as file:
             json.dump(connexion.request.get_json(), file)
+        s3.Bucket(BUCKET).upload_file(fn, fn)
     return ''
 
 
@@ -62,6 +65,8 @@ def track_post(body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = TrackBody.from_dict(connexion.request.get_json())  # noqa: E501
-        with open('post-track-{}-{}.json'.format(body.user_id, body.events[-1].timestamp_utc), 'w') as file:
+        fn = 'post-track-{}-{}.json'.format(body.user_id, body.events[-1].timestamp_utc)
+        with open(fn, 'w') as file:
             json.dump(connexion.request.get_json(), file)
+        s3.Bucket(BUCKET).upload_file(fn, fn)
     return ''
