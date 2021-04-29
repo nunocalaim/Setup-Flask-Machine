@@ -3,13 +3,11 @@
 run the following command:
 swagger-codegen generate -i swagger.yml -l python-flask -c config.json -o python_flask 
 
-substitute python_flask/tracking_server/controllers/default_controller.py by default_controller.py
-substitute python_flask/tracking_server/controllers/util.py by util.py
+substitute tracking_server/tracking_server/controllers/default_controller.py by default_controller.py
 
 ```
-cd python_flask
-pip3 install -r requirements.txt
-python3 -m tracking_server
-test.sh
+cd tracking_server
+pip3 install -r python_flask/requirements.txt
+python3 -m python_flask/tracking_server
 ```
 
