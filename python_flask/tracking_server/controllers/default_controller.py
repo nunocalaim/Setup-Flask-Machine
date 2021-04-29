@@ -8,6 +8,10 @@ from tracking_server import util
 
 import json
 
+import boto3
+
+s3 = boto3.resource('s3')
+BUCKET = "ddc_s3_bucket"
 
 
 
@@ -25,6 +29,7 @@ def alias_post(body):  # noqa: E501
         body = AliasBody.from_dict(connexion.request.get_json())  # noqa: E501
         with open('post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc), 'w') as file:
             json.dump(connexion.request.get_json(), file)
+        s3.Bucket(BUCKET).upload_file('post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc), 'post-alias-{}-{}.json'.format(body.new_user_id, body.timestamp_utc))
     return ''
 
 
