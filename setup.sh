@@ -17,7 +17,8 @@ sleep 20
 echo "installed requirements"
 pip3 install connexion[swagger-ui]
 sleep 10
-echo "Installed UI, starting Server now"
+echo "Ready for you to SSH and start the Server now"
+# echo "Installed UI, starting Server now"
 # nohup python3 -m tracking_server &
-(nohup python3 -m tracking_server 2> /dev/null &)
-echo "Started the server"
+# (nohup python3 -m tracking_server 2> /dev/null &)
+# echo "Started the server"
