@@ -1,4 +1,8 @@
-# When you set up the resources with terrform, you should ssh the instance and run these commands in order
+# Instructions
+
+This repo is used to create a Flask server that communicates with a private s3 bucket.
+
+All aws resources are assumed to be provisioned, then you should ssh to your instance and run these commands in order
 
 
 ```
